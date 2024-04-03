@@ -24,6 +24,7 @@ class MainViewController: UIViewController {
     @IBOutlet private weak var remoteCandidatesLabel: UILabel?
     @IBOutlet private weak var muteButton: UIButton?
     @IBOutlet private weak var webRTCStatusLabel: UILabel?
+    @IBOutlet private weak var touchButton: UIButton!
     
     private var signalingConnected: Bool = false {
         didSet {
@@ -151,6 +152,11 @@ class MainViewController: UIViewController {
         }
     }
     
+    @IBAction private func touchDidTap(_ sender: UIButton) {
+        let touchScene = TouchViewController(webRTCClient: webRTCClient)
+        self.navigationController?.pushViewController(touchScene, animated: true)
+    }
+    
     @IBAction func sendDataDidTap(_ sender: UIButton) {
         let alert = UIAlertController(title: "Send a message to the other peer",
                                       message: "This will be transferred over WebRTC data channel",
@@ -163,7 +169,7 @@ class MainViewController: UIViewController {
             guard let dataToSend = alert.textFields?.first?.text?.data(using: .utf8) else {
                 return
             }
-            self?.webRTCClient.sendData(dataToSend)
+            self?.webRTCClient.sendData(type: .message, dataToSend)
         }))
         self.present(alert, animated: true, completion: nil)
     }

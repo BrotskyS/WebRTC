@@ -8,6 +8,7 @@
 
 import Foundation
 import WebRTC
+import Combine
 
 protocol WebRTCClientDelegate: AnyObject {
     func webRTCClient(_ client: WebRTCClient, didDiscoverLocalCandidate candidate: RTCIceCandidate)
@@ -37,6 +38,9 @@ final class WebRTCClient: NSObject {
     private var remoteVideoTrack: RTCVideoTrack?
     private var localDataChannel: RTCDataChannel?
     private var remoteDataChannel: RTCDataChannel?
+    
+    // MARK: Combine
+    var touchEventSubject = PassthroughSubject<TouchModel, Never>()
 
     @available(*, unavailable)
     override init() {
@@ -182,7 +186,7 @@ final class WebRTCClient: NSObject {
     private func createVideoTrack() -> RTCVideoTrack {
         let videoSource = WebRTCClient.factory.videoSource()
         
-        #if targetEnvironment(simulator) || os(iOS)
+        #if targetEnvironment(simulator)
         self.videoCapturer = RTCFileVideoCapturer(delegate: videoSource)
         #else
         self.videoCapturer = RTCCameraVideoCapturer(delegate: videoSource)
@@ -205,6 +209,18 @@ final class WebRTCClient: NSObject {
     func sendData(_ data: Data) {
         let buffer = RTCDataBuffer(data: data, isBinary: true)
         self.remoteDataChannel?.sendData(buffer)
+    }
+    
+    func sendData<T: Encodable>(type: WSBaseEvent, _ data: T) {
+        do {
+            let model = try WSBaseModel.data(type: type, data)
+            
+            let buffer = RTCDataBuffer(data: model, isBinary: true)
+            self.remoteDataChannel?.sendData(buffer)
+        } catch {
+            // TODO: show error
+        }
+    
     }
 }
 
@@ -326,6 +342,26 @@ extension WebRTCClient: RTCDataChannelDelegate {
     }
     
     func dataChannel(_ dataChannel: RTCDataChannel, didReceiveMessageWith buffer: RTCDataBuffer) {
-        self.delegate?.webRTCClient(self, didReceiveData: buffer.data)
+        
+        let jsonDecoder = JSONDecoder()
+        
+        do {
+            guard let msg = try WSBaseModel(from: buffer.data) else { return }
+            
+            switch msg.type {
+                case .message:
+                    if let body = msg.body {
+                        self.delegate?.webRTCClient(self, didReceiveData: body)
+                    }
+                    
+                case .touch:
+                    if let touchModel = try msg.parse(TouchModel.self, by: jsonDecoder) {
+                        touchEventSubject.send(touchModel)
+                    }
+            }
+        } catch {
+            // TODO: show error
+        }
+        
     }
 }

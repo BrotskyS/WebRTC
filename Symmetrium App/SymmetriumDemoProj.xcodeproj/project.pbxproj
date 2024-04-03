@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DCC8E942BBD902700518CD3 /* TouchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC8E932BBD902700518CD3 /* TouchViewController.swift */; };
+		0DCC8E972BBD92E900518CD3 /* WSBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC8E962BBD92E900518CD3 /* WSBaseModel.swift */; };
+		0DCC8E9A2BBD961700518CD3 /* TouchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC8E992BBD961700518CD3 /* TouchModel.swift */; };
+		0DCC8E9C2BBDB0DB00518CD3 /* WSErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCC8E9B2BBDB0DB00518CD3 /* WSErrors.swift */; };
 		2F0D643D26FC644100CB9A47 /* WebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = 2F0D643C26FC644100CB9A47 /* WebRTC */; };
 		2F2E228828E81A080026A8B5 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 2F2E228728E81A080026A8B5 /* Starscream */; };
 		2F7EBC3622DCC6430015B46E /* WebSocketProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7EBC3522DCC6430015B46E /* WebSocketProvider.swift */; };
@@ -29,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0DCC8E932BBD902700518CD3 /* TouchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchViewController.swift; sourceTree = "<group>"; };
+		0DCC8E962BBD92E900518CD3 /* WSBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBaseModel.swift; sourceTree = "<group>"; };
+		0DCC8E992BBD961700518CD3 /* TouchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchModel.swift; sourceTree = "<group>"; };
+		0DCC8E9B2BBDB0DB00518CD3 /* WSErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSErrors.swift; sourceTree = "<group>"; };
 		2F7EBC3522DCC6430015B46E /* WebSocketProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketProvider.swift; sourceTree = "<group>"; };
 		2F7EBC3722DCCB4E0015B46E /* StarscreamProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarscreamProvider.swift; sourceTree = "<group>"; };
 		2F7EBC3922DCCE240015B46E /* NativeWebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeWebSocket.swift; sourceTree = "<group>"; };
@@ -63,9 +71,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DCC8E922BBD8FB300518CD3 /* TouchScene */ = {
+			isa = PBXGroup;
+			children = (
+				0DCC8E932BBD902700518CD3 /* TouchViewController.swift */,
+			);
+			path = TouchScene;
+			sourceTree = "<group>";
+		};
+		0DCC8E952BBD92BF00518CD3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0DCC8E962BBD92E900518CD3 /* WSBaseModel.swift */,
+				0DCC8E992BBD961700518CD3 /* TouchModel.swift */,
+				0DCC8E9B2BBDB0DB00518CD3 /* WSErrors.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0DCC8E982BBD95FB00518CD3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		2F7EBC3422DCC6300015B46E /* WebSocketProvider */ = {
 			isa = PBXGroup;
 			children = (
+				0DCC8E952BBD92BF00518CD3 /* Models */,
 				2F7EBC3522DCC6430015B46E /* WebSocketProvider.swift */,
 				2F7EBC3722DCCB4E0015B46E /* StarscreamProvider.swift */,
 				2F7EBC3922DCCE240015B46E /* NativeWebSocket.swift */,
@@ -139,6 +173,7 @@
 		798FBA422200F3B1009F525E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				0DCC8E982BBD95FB00518CD3 /* Models */,
 				798FBA452200F519009F525E /* Services */,
 				798FBA442200F510009F525E /* Screens */,
 				79177CA420B1C39700BCD399 /* Extensions */,
@@ -151,6 +186,7 @@
 		798FBA442200F510009F525E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				0DCC8E922BBD8FB300518CD3 /* TouchScene */,
 				7921989F220107C90051F03F /* MainScreen */,
 				792198A0220107E30051F03F /* VideoScreen */,
 			);
@@ -257,12 +293,16 @@
 				795A4A26221E081A00F8BB03 /* SessionDescription.swift in Sources */,
 				79177CA620B1F76E00BCD399 /* RTCStates.swift in Sources */,
 				79177C9920B0DF2700BCD399 /* SignalingClient.swift in Sources */,
+				0DCC8E972BBD92E900518CD3 /* WSBaseModel.swift in Sources */,
 				795A4A2A221E0FB100F8BB03 /* Message.swift in Sources */,
 				795A4A28221E0A1B00F8BB03 /* IceCandidate.swift in Sources */,
 				2F7EBC3622DCC6430015B46E /* WebSocketProvider.swift in Sources */,
+				0DCC8E942BBD902700518CD3 /* TouchViewController.swift in Sources */,
 				79177C9720B0DE7A00BCD399 /* WebRTCClient.swift in Sources */,
 				2F7EBC3822DCCB4E0015B46E /* StarscreamProvider.swift in Sources */,
 				2F7EBC3A22DCCE240015B46E /* NativeWebSocket.swift in Sources */,
+				0DCC8E9A2BBD961700518CD3 /* TouchModel.swift in Sources */,
+				0DCC8E9C2BBDB0DB00518CD3 /* WSErrors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,14 +435,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4VVAX5884Z;
+				DEVELOPMENT_TEAM = K4B335LMWX;
 				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.symmetrium.demoproj;
+				PRODUCT_BUNDLE_IDENTIFIER = com.symmetrium.demoprojs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -417,14 +457,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4VVAX5884Z;
+				DEVELOPMENT_TEAM = K4B335LMWX;
 				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.symmetrium.demoproj;
+				PRODUCT_BUNDLE_IDENTIFIER = com.symmetrium.demoprojs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
